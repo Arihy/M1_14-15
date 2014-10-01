@@ -1,0 +1,29 @@
+#titre
+{
+	float: left;
+}
+
+#menu
+{
+	text-align: right;
+}
+
+#menu > ul > li
+{
+	display: inline;
+}
+
+#sidebar
+{
+	display: inline-block;
+    width: 150px;
+    border: 1px solid black;
+    vertical-align: top;
+}
+
+#content
+{
+	display: inline-block;    
+    border: 1px solid blue;
+    vertical-align: top;
+}
