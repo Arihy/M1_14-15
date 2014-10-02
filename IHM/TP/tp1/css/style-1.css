@@ -9,16 +9,14 @@ header
 #titre
 {
 	display: inline-block;
-	vertical-align: top;
 	border: 1px solid blue;
 }
 
 nav
 {
+	margin-left: 270px;
 	display: inline-block;
-	text-align: right;
 	border: 1px solid blue;
-	margin-left: 400px;
 }
 
 nav > ul > li
@@ -44,19 +42,20 @@ section
 
 article
 {
-	border: 1px solid blue;
+	/*border: 1px solid red;*/
 }
 
 article > h2
 {
-	width: 200px;
+	width: 300px;
 	border: 1px solid green;
 }
 
 article > p
 {
+	margin: 0;
 	vertical-align: top;
-	width: 500px;
+	width: 700px;
 	display: inline-block;
     border: 1px solid blue;
 }
@@ -64,7 +63,7 @@ article > p
 article > img
 {
 	display: inline-block;
-	border: 1px solid red;
+	/*border: 1px solid red;*/
 }
 
 aside
