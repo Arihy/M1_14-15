@@ -2,10 +2,10 @@
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
-import java.util.StringTokenizer;
 import java.util.TreeSet;
 
 // Choix de codage 
@@ -17,7 +17,7 @@ import java.util.TreeSet;
 
 public class CSP {
 	
-	private HashMap<String,TreeSet<Object>> varDom; // table de hachage associant ˆ chaque variable son domaine
+	private HashMap<String,TreeSet<Object>> varDom; // table de hachage associant ï¿½ chaque variable son domaine
 	private ArrayList<Constraint> constraints; // liste des contraintes
 	
 	// initialise un CSP avec des structures vides
@@ -26,9 +26,20 @@ public class CSP {
 		constraints = new ArrayList<Constraint>();
 	}
 
-	// initialise un CSP ˆ partir d'un fichier texte
-	public CSP(String fileName) {
-		// TO DO                    
+	// initialise un CSP ï¿½ partir d'un fichier texte
+	public CSP(String fileName) throws IOException {
+		BufferedReader readerFile = new BufferedReader(new FileReader(fileName));
+		System.out.println("lecture du fichier " + fileName);
+		
+		String line = readerFile.readLine();
+		int nbVariable = Integer.parseInt(line);
+		
+		for(int i = 0; i < nbVariable; i++)
+		{
+			line = readerFile.readLine();
+			String[] tab = line.split(";");
+			
+		}
 	}
 	
 	// ajoute une variable
@@ -82,7 +93,7 @@ public class CSP {
 		return constraints;
 	}
 	
-	// retourne l'ensemble des contraintes contenant la variable passŽe en paramtre
+	// retourne l'ensemble des contraintes contenant la variable passï¿½e en paramï¿½tre
 	public ArrayList<Constraint> getConstraintsContaining(String var) {
 		ArrayList<Constraint> selected = new ArrayList<Constraint>();
 		for(Constraint c : constraints) {
@@ -95,7 +106,7 @@ public class CSP {
 		return "Var et Dom : " + varDom + "\nConstraints :" + constraints;
 	}
 	
-	public static void main(String[] args){
+	public static void main(String[] args) throws IOException{
 		CSP monCSP = new CSP();
 		// les variables
 		String v1 = new String("x"); // la variable v1 a pour nom x
@@ -104,9 +115,9 @@ public class CSP {
 		monCSP.addVariable(v1); // ajout de la variable v1 au CSP
 		monCSP.addVariable(v2);
 		monCSP.addVariable(v3);
-		monCSP.addVariable("x");
+		monCSP.addVariable("x"); //[erreur] variable x deja existante
 		// les domaines
-		monCSP.addValue(v1,1); // ajout de la valeur 1 aud omaine de v1
+		monCSP.addValue(v1,1); // ajout de la valeur 1 au domaine de v1
 		monCSP.addValue(v1,2);
 		monCSP.addValue(v1,3);
 		monCSP.addValue(v2,"as");
@@ -115,7 +126,7 @@ public class CSP {
 		monCSP.addValue(v3,4);
 		monCSP.addValue(v3,6);
 		monCSP.addValue(v3,0);
-		monCSP.addValue(v3,2);
+		monCSP.addValue(v3,2); //[erreur] valeur 2 est deja dans le domaine de la variable z
 		// les contraintes
 		ArrayList<String> varTuple;
 		ArrayList<Object> valTuple;
@@ -157,12 +168,12 @@ public class CSP {
 		valTuple = new ArrayList<Object>(2);
 		valTuple.add(0,4);
 		valTuple.add(1,"tutu");
-		c2.addTuple(valTuple);
+		c2.addTuple(valTuple); // [erreur] tuple [4, tutu] n'a pas l'arite 3 de ka cibtrainte C2
 		valTuple = new ArrayList<Object>(3);
 		valTuple.add(0,"as");
 		valTuple.add(1,1);
 		valTuple.add(2,3);
-		c2.addTuple(valTuple);
+		c2.addTuple(valTuple); //[erreur] tuple [as, 1, 3] est deja present dans la contrainte C2
 		monCSP.addConstraint(c2);
 		
 		//c3 : <w> : <1> <2>
@@ -171,7 +182,7 @@ public class CSP {
 		Constraint c3 = new Constraint(varTuple);
 		valTuple = new ArrayList<Object>(1);
 		valTuple.add(0,1);
-		c3.addTuple(valTuple);
+		c3.addTuple(valTuple); // [erreur] contrainte C3 contient des variables ([w]) non declarees dans le CSP dont les variables sont [z, y, x]
 		valTuple = new ArrayList<Object>(1);
 		valTuple.add(0,2);
 		c3.addTuple(valTuple);

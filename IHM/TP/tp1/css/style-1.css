@@ -1,9 +1,9 @@
-#header
+header
 {
 	position: relative;
 	margin: 0 auto;
 	width: 940px;
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 }
 
 #titre
@@ -13,7 +13,7 @@
 	border: 1px solid blue;
 }
 
-#menu
+nav
 {
 	display: inline-block;
 	text-align: right;
@@ -21,35 +21,61 @@
 	margin-left: 400px;
 }
 
-#menu > ul > li
+nav > ul > li
 {
 	display: inline;
 }
 
-#page
+section
 {
 	position: relative;
 	margin: 0 auto;
 	width: 940px;
+	/*border: 1px solid black;*/
+}
+
+#table
+{
+	width: 200px;
+	display: inline-block; /*mettre les elements qu'on veut alligner en inline-block*/
+    vertical-align: top;
 	border: 1px solid black;
 }
 
-#content
+article
 {
-	float: right;
-	width: 700px;
+	border: 1px solid blue;
+}
+
+article > h2
+{
+	width: 200px;
+	border: 1px solid green;
+}
+
+article > p
+{
+	vertical-align: top;
+	width: 500px;
+	display: inline-block;
     border: 1px solid blue;
 }
 
-#sidebar
+article > img
 {
 	display: inline-block;
+	border: 1px solid red;
+}
+
+aside
+{
     width: 200px;
+	display: inline-block;
     border: 1px solid black;
     vertical-align: top;
 }
 
-#footer
+footer
 {
 	position: relative;
 	border: 1px solid red;

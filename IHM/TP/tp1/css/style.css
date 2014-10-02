@@ -19,9 +19,14 @@
 	text-align: center;
 }
 
+.image > img
+{
+	border: 1px solid transparent;
+	margin-top: 10px;
+}
+
+
 .image > img:hover
 {
-	border-style: solid;
-	border-width: 1px;
-    border-color: #FFF;
+	border: 1px solid white;
 }

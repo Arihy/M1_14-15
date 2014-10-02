@@ -3,7 +3,7 @@
 	position: relative;
 	margin: 0 auto;
 	width: 940px;
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 }
 
 #titre
@@ -31,20 +31,28 @@
 	position: relative;
 	margin: 0 auto;
 	width: 940px;
+	/*border: 1px solid black;*/
+}
+
+#table
+{
+	width: 200px;
+	display: inline-block; /*mettre les elements qu'on veut alligner en inline-block*/
+    vertical-align: top;
 	border: 1px solid black;
 }
 
 #content
 {
-	float: right;
-	width: 700px;
+	width: 500px;
+	display: inline-block;
     border: 1px solid blue;
 }
 
 #sidebar
 {
-	display: inline-block;
     width: 200px;
+	display: inline-block;
     border: 1px solid black;
     vertical-align: top;
 }
