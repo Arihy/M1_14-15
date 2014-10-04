@@ -1,7 +1,8 @@
 # Eclipse
-.classpath
-.project
-.settings/
+*.classpath
+*.class
+*.project
+*.settings/
 
 # Intellij
 .idea/

@@ -28,9 +28,10 @@ public class CSP {
 
 	// initialise un CSP � partir d'un fichier texte
 	public CSP(String fileName) throws IOException {
+        varDom = new HashMap<String,TreeSet<Object>>();
+        constraints = new ArrayList<Constraint>();
+
 		BufferedReader readerFile = new BufferedReader(new FileReader(fileName));
-		System.out.println("lecture du fichier " + fileName);
-		
 		String line = readerFile.readLine();
 		int nbVariable = Integer.parseInt(line);
 		
@@ -38,8 +39,46 @@ public class CSP {
 		{
 			line = readerFile.readLine();
 			String[] tab = line.split(";");
-			
-		}
+            addVariable(tab[0]);
+            for(int j = 1; j < tab.length; j++)
+            {
+                addValue(tab[0], tab[j]);
+            }
+        }
+
+        line = readerFile.readLine();
+        int nbConstraints = Integer.parseInt(line);
+        ArrayList<String> varTuple;
+        ArrayList<Object> valTuple;
+
+        for(int i = 0; i < nbConstraints; i++)
+        {
+            line = readerFile.readLine();
+            String[] tab = line.split(";");
+            varTuple= new ArrayList<String>(tab.length);
+
+            for(int j = 0; j < tab.length; j++)
+            {
+                varTuple.add(j, tab[j]);
+            }
+
+            Constraint constraint = new Constraint(varTuple);
+            line = readerFile.readLine();
+            int nbTuple = Integer.parseInt(line);
+
+            for(int j = 0; j < nbTuple; j++)
+            {
+                line = readerFile.readLine();
+                String[] tab2 = line.split(";");
+                valTuple = new ArrayList<Object>(tab.length);
+                for(int k = 0; k < tab.length; k++)
+                {
+                    valTuple.add(k, tab2[k]);
+                }
+                constraint.addTuple(valTuple);
+            }
+            addConstraint(constraint);
+        }
 	}
 	
 	// ajoute une variable
