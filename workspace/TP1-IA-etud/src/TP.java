@@ -10,11 +10,11 @@ public class TP {
 		//Lire un CSP depuis un fichier
 		String fileName = "example.txt";
 		CSP myProblem;
-		try {    
-			System.out.println("Chargement du fichier : "+new java.io.File( "." ).getCanonicalPath()+"/"+fileName);
-			myProblem = new CSP(fileName);
-		}catch(Exception e) {
-	     System.err.println("Erreur lors du chargement du fichier " + fileName);
+		try {
+            System.out.println("Chargement du fichier : "+new java.io.File( "." ).getCanonicalPath()+"/"+fileName);
+            myProblem = new CSP(fileName);
+        }catch(Exception e) {
+            System.err.println("Erreur lors du chargement du fichier " + fileName);
 			System.err.println(e);
 			return;
 		}
