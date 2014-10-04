@@ -1,9 +1,20 @@
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
 *.iml
-*.idea
-*.class
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
 *.metadata
-*.classpath
-*.project
 bin
 
 # Mobile Tools for Java (J2ME)
