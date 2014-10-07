@@ -3,6 +3,7 @@ $(document).ready(function(){
     if(canvas.getContext)
 	{
         var ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawRectangle(ctx, 20, 10, 300, 50, "gray");
 
         drawTriangle(ctx, 0, 0, 100, 0, 100, 100, "black");
@@ -31,8 +32,8 @@ $(document).ready(function(){
             drawImage(ctx, img, 130, 120, 200, 200);
         }
         
-        drawLine(ctx, 20, 100, 20, 370);
-        drawLine(ctx, 20, 370, 150, 370);
+        drawLine(ctx, 20, 100, 20, 370, "#d4d4d4");
+        drawLine(ctx, 20, 370, 150, 370, "#d4d4d4");
     }
 });
 
@@ -57,8 +58,9 @@ function drawTriangle(ctx, x1, y1, x2, y2, x3, y3, color)
     console.log('end triangle');
 }
 
-function drawLine(ctx, x1, y1, x2, y2)
+function drawLine(ctx, x1, y1, x2, y2, color)
 {
+    ctx.strokeStyle = color;
     ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.moveTo(x1, y1);
