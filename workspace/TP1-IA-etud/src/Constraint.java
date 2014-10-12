@@ -6,9 +6,9 @@ import java.util.Set;
 
 public class Constraint {
 	
-	private static int num=0; //pour donner un numŽro unique ˆ chaque contrainte
+	private static int num=0; //pour donner un numï¿½ro unique ï¿½ chaque contrainte
 	private String name; // nom de la contrainte
-	private ArrayList<String> varTuple; // ensemble ordonnŽ de variables
+	private ArrayList<String> varTuple; // ensemble ordonnï¿½ de variables
 	private Set<ArrayList<Object>> valTuples; // ensemble de tuples de la contrainte
 	
 	public Constraint(ArrayList<String> var) {
@@ -35,6 +35,7 @@ public class Constraint {
 	public ArrayList<String> getVariables() {
 		return varTuple;
 	}
+    public Set<ArrayList<Object>> getTuples(){ return valTuples; }
 	
 	public void addTuple(ArrayList<Object> valTuple) {
 		if(valTuple.size() != varTuple.size()) System.err.println("Le tuple " + valTuple + " n'a pas l'arite " + varTuple.size() + " de la contrainte " + name);
