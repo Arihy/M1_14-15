@@ -73,7 +73,6 @@ public class Solver
 
     private boolean consistant(HashMap<String,Object> assignedVar, ArrayList<Constraint> constraints)
     {
-        boolean consistant = true;
         for(Constraint c : constraints)
         {
             if(assignedVar.size() >= c.getArity())
@@ -97,13 +96,12 @@ public class Solver
                     if(c.getTuples().contains(valTuple))
                     {
                         okTuple = true;
-                        consistant = true;
                     }
                     if(!okTuple)
                         return false;
                 }
             }
         }
-        return consistant;
+        return true;
     }
 }
