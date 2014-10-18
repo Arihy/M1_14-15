@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            Poser une question
+        </title>
+        <link href="style.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <h1>Poser une question</h1>
+        <form action="" method="">
+            <div>
+                <label>Prénoms, Nom</label>
+                <input type="text" placeholder="Pierre, Paul, Jacques">
+                <input type="text" placeholder="Dupont">
+            </div>
+            <div>
+                <label>Pseudo</label>
+                <input type="text" placeholder="" size="46">
+            </div>
+            <div>
+                <label>Email</label>
+                <input type="email" placeholder="">
+            </div>
+            <div>
+                <label>Website</label>
+                <input type="text" placeholder="">
+            </div>
+        
+            <h2>Soignez l'expression de votre question</h2>
+            <p>Surtout qu'en vos écrits la langue révérée<br />
+    Dans vos plus grands excès vous soit toujours sacrée.</p>
+            <label for="Field2"> Question </label>
+            <div>
+                <textarea id="Field2" name="Field2" rows="10" cols="50" tabindex="12"></textarea>
+            </div>
+            <label>Validite</label>
+            <div id="radio">
+                <input type="radio" name="validite" value="intermediaire">intermediaire
+                <input type="radio" name="validite" value="jour">un jour
+                <input type="radio" name="validite" value="semaine">une semaine
+                <input type="radio" name="validite" value="mois">un mois
+                <input type="radio" name="validite" value="an">un an
+            </div>
+            <div id="btn-submit">
+                <button>Soumetre</button>        
+            </div>
+        </form>
+    </body>
+</html>

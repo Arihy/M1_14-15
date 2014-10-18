@@ -1,0 +1,31 @@
+body
+{
+    width: 940px;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+form
+{
+    width: 700px;
+    margin: 0 auto;
+    border: 1px solid blue;
+}
+
+label
+{
+    float: left;
+    width: 120px;
+    border: 1px solid red;
+}
+
+#radio
+{
+    width: 700px;
+    border: 1px solid green;
+}
+
+#btn-submit
+{
+    text-align: center;
+}
