@@ -2,25 +2,28 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Constraint {
+public abstract class Constraint {
 	
 	private static int num=0; //pour donner un num�ro unique � chaque contrainte
-	private String name; // nom de la contrainte
-	private ArrayList<String> varTuple; // ensemble ordonn� de variables
-	private Set<ArrayList<Object>> valTuples; // ensemble de tuples de la contrainte
-	
+	protected String name; // nom de la contrainte
+	protected ArrayList<String> varTuple; // ensemble ordonn� de variables
+
+    public Constraint() {
+        num++;
+        this.name = "C"+num;
+        varTuple = new ArrayList<String>();
+    }
+
 	public Constraint(ArrayList<String> var) {
 		num++;
 		this.name = "C"+num;
 		varTuple = var; 
-		valTuples = new HashSet<ArrayList<Object>>();
 	}
 	
 	public Constraint(ArrayList<String> var, String name) {
 		num++;
 		this.name = name;
 		varTuple = var; 
-		valTuples = new HashSet<ArrayList<Object>>();
 	}
 	
 	public int getArity() {
@@ -32,26 +35,10 @@ public class Constraint {
 	public ArrayList<String> getVariables() {
 		return varTuple;
 	}
-    public Set<ArrayList<Object>> getTuples(){ return valTuples; }
-	
-	public void addTuple(ArrayList<Object> valTuple) {
-		if(valTuple.size() != varTuple.size()) System.err.println("Le tuple " + valTuple + " n'a pas l'arite " + varTuple.size() + " de la contrainte " + name);
-		else if(!valTuples.add(valTuple)) System.err.println("Le tuple " + valTuple + " est deja present dans la contrainte "+ name);
-	}
 
-    /**
-     * Tester si le tuple appartient a la contrainte
-     * @param tuple Un tuple
-     * @return true si le tuple appartient a l'ensemble de tuples de la contrainte, false sinon
-     */
-    public boolean violationTest(ArrayList<Object> tuple)
-    {
-        return valTuples.contains(tuple);
-    }
-	
+    public abstract boolean violationTest(ArrayList<Object> tuple);
+
 	public String toString() {
-		return "\n\t"+ name + " = " + varTuple + " : " + valTuples; 
+		return "\n\t"+ name + " = " + varTuple + " : ";
 	}
-
-
 }
