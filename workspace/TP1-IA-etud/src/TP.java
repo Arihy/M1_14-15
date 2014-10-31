@@ -9,7 +9,9 @@ public class TP {
 	public static void main(String args[]) {
 		//Lire un CSP depuis un fichier
 		//String fileName = "example.txt";
-		String fileName = "4reines";
+		//String fileName = "4reines";
+		//String fileName = "automobile";
+		String fileName = "coloration";
 		CSP myProblem;
 		try {
             System.out.println("Chargement du fichier : "+new java.io.File( "." ).getCanonicalPath()+"/"+fileName);

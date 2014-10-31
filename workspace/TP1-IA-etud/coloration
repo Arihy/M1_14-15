@@ -1,0 +1,17 @@
+7
+WA;R;G;B
+Q;R;G;B
+T;R;G;B
+SA;R;G;B
+NSW;R;G;B
+V;R;G;B
+NT;R;G;B
+4
+dif
+WA;NT;SA
+dif
+NT;SA;Q
+dif
+SA;Q;NSW
+dif
+SA;NSW;V

@@ -17,6 +17,13 @@ public class ConstraintEq extends Constraint {
     public ConstraintEq(BufferedReader readerFile) throws IOException {
         super();
         String line = readerFile.readLine();
+        String[] tab = line.split(";");
+        varTuple = new ArrayList<String>(tab.length);
+
+        for(int j = 0; j < tab.length; j++)
+        {
+            varTuple.add(j, tab[j]);
+        }
     }
 
     /**
@@ -28,10 +35,11 @@ public class ConstraintEq extends Constraint {
     {
         for(int i = 0; i < tuple.size() - 1; i++)
         {
-            if(tuple.get(i) == tuple.get(i + 1))
+            if(!tuple.get(i).equals(tuple.get(i + 1))) {
                 return false;
+            }
         }
-        return false;
+        return true;
     }
 
     public String toString()
