@@ -79,7 +79,40 @@ public class Solver
      */
     public HashSet<HashMap<String,Object>> searchAllSolutions()
     {
-        // TO DO
+        HashSet<HashMap<String,Object>> ens = new HashSet<HashMap<String, Object>>();
+        HashMap<String,Object> assignation = new HashMap<String,Object>();
+        backtrack(ens, assignation);
+        return ens;
+    }
+
+    /**
+     * Trouve toues les solutions du problème s'il en existe
+     * @param assignation HashMap contenant une solution partielle
+     * @return appel recursif s'il trouve une solution partielle, null s'il n'y a pas de solution
+     */
+    private HashMap<String,Object> backtrack(HashSet<HashMap<String,Object>> ens, HashMap<String,Object> assignation)
+    {
+        if(assignation.size() == problem.getVarNumber())
+        {
+            ens.add(assignation);
+            return null;
+        }
+
+        String x = chooseVar(problem.getVar(), assignation.keySet());
+        for(Iterator v = tri(problem.getDom(x)).iterator(); v.hasNext();)
+        {
+            HashMap<String,Object> newAssignation = new HashMap<String, Object>(assignation);
+            Object val = v.next() ;
+            newAssignation.put(x, val);
+
+            if(consistant(newAssignation, problem.getConstraints()))
+            {
+                if(backtrack(ens, newAssignation) != null)
+                {
+                    return backtrack(ens, newAssignation);
+                }
+            }
+        }
         return null;
     }
 

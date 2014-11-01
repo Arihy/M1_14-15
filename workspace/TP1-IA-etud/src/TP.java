@@ -1,6 +1,7 @@
                                                                                                                     
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 // exemple de main pour le test de l'algorithme de backtrack
 
@@ -23,8 +24,12 @@ public class TP {
 		}
 		System.out.println("\nRecherche d'une solution au probleme :\n" + myProblem);
 		Solver mySolver = new Solver(myProblem);
-		HashMap<String,Object> mySolution = mySolver.searchSolution();
-		if (mySolution == null) System.out.println("Pas de solution !");
-		else System.out.println("Une solution est " + mySolution);
-	}
+		//HashMap<String,Object> mySolution = mySolver.searchSolution();
+        HashSet<HashMap<String,Object>> mySolution = mySolver.searchAllSolutions();
+        if (mySolution == null) System.out.println("Pas de solution !");
+		else {
+            System.out.println("Il y a "+mySolution.size()+" solution(s)");
+            System.out.println("Solution est " + mySolution);
+        }
+    }
 }
