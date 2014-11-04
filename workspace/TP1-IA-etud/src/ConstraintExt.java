@@ -20,6 +20,11 @@ public class ConstraintExt extends Constraint {
         valTuples = new HashSet<ArrayList<Object>>();
     }
 
+    /**
+     * Constructeur initialisant la contrainte grace a un flux
+     * @param readerFile BufferedReader
+     * @throws IOException
+     */
     public ConstraintExt(BufferedReader readerFile) throws IOException {
         super();
         valTuples = new HashSet<ArrayList<Object>>();
@@ -51,6 +56,11 @@ public class ConstraintExt extends Constraint {
     }
 
     public Set<ArrayList<Object>> getTuples(){ return valTuples; }
+
+    /**
+     * Ajoute un tuple
+     * @param valTuple ArrayList
+     */
 	public void addTuple(ArrayList<Object> valTuple) {
         if(valTuple.size() != varTuple.size()) System.err.println("Le tuple " + valTuple + " n'a pas l'arite " + varTuple.size() + " de la contrainte " + name);
 		else if(!valTuples.add(valTuple)) System.err.println("Le tuple " + valTuple + " est deja present dans la contrainte "+ name);

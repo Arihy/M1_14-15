@@ -4,9 +4,12 @@ public class Solver
 {
     public CSP problem; // l'instance de CSP
 
+    public int nbState;
+
     public Solver(CSP p)
     {
         problem = p;
+        nbState = 0;
     }
 
     /**
@@ -37,6 +40,7 @@ public class Solver
             HashMap<String,Object> newAssignation = new HashMap<String, Object>(assignation);
             Object val = v.next() ;
             newAssignation.put(x, val);
+            nbState++;
 
             if(consistant(newAssignation, problem.getConstraints()))
             {
@@ -58,14 +62,28 @@ public class Solver
      */
     private String chooseVar(Set<String> allVar, Set<String> assignedVar)
     {
+        String bestVar = null;
+        int nbVar = -1;
         for(String s : allVar)
         {
             if(!assignedVar.contains(s))
             {
-                return s;
+                int tmpSize = problem.getDom(s).size();
+                if(tmpSize > nbVar){
+                    bestVar = s;
+                    nbVar = tmpSize;
+                }
+                else if(tmpSize == nbVar)
+                {
+                    if(problem.getConstraintsContaining(s).size() > problem.getConstraintsContaining(bestVar).size())
+                    {
+                        bestVar = s;
+                        nbVar = tmpSize;
+                    }
+                }
             }
         }
-        return null;
+        return bestVar;
     }
 
 
@@ -97,7 +115,6 @@ public class Solver
         if(assignation.size() == problem.getVarNumber())
         {
             HashMap<String,Object> newAssignation = new HashMap<String, Object>(assignation);
-            System.out.println(newAssignation);
             ens.add(newAssignation);
             return null;
         }

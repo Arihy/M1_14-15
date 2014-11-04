@@ -14,6 +14,11 @@ public class ConstraintEq extends Constraint {
         super(var);
     }
 
+    /**
+     * Constructeur initialisant la contrainte grace a un flux
+     * @param readerFile BufferedReader
+     * @throws IOException
+     */
     public ConstraintEq(BufferedReader readerFile) throws IOException {
         super();
         String line = readerFile.readLine();

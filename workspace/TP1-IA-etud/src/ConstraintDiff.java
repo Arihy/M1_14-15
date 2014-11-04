@@ -4,17 +4,18 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
- * Created by Arihy on 21/10/2014.
+ * Classe déffinissant une contrainte de différence
  */
 public class ConstraintDiff extends Constraint {
     public ConstraintDiff(ArrayList<String> var, String name) {
         super(var, name);
     }
 
-    public ConstraintDiff(ArrayList<String> var) {
-        super(var);
-    }
-
+    /**
+     * Constructeur initialisant la contrainte grace a un flux
+     * @param readerFile BufferedReader
+     * @throws IOException
+     */
     public ConstraintDiff(BufferedReader readerFile) throws IOException {
         super();
         String line = readerFile.readLine();
@@ -25,6 +26,10 @@ public class ConstraintDiff extends Constraint {
         {
             varTuple.add(j, tab[j]);
         }
+    }
+
+    public ConstraintDiff(ArrayList<String> var) {
+        super(var);
     }
 
     /**

@@ -28,7 +28,8 @@ public class TP {
         //HashSet<HashMap<String,Object>> mySolution = mySolver.searchAllSolutions();
         if (mySolution == null) System.out.println("Pas de solution !");
 		else {
-            System.out.println("Il y a "+mySolution.size()+" solution(s)");
+            System.out.println("Il y a "+mySolution.size()+" solution(s) (information pertinente si recherche de toutes les solutions)");
+            System.out.println("Solution(s) trouvée(s) en "+mySolver.nbState+" état(s)");
             System.out.println("Solution est " + mySolution);
         }
     }

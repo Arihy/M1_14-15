@@ -65,13 +65,20 @@ public class CSP {
         }
     }
 
-	// ajoute une variable
+    /**
+     * Ajoute une variable
+     * @param var String
+     */
 	public void addVariable(String var) {
 		if(varDom.get(var)==null) varDom.put(var, new TreeSet<Object>());
 		else System.err.println("Variable " + var + " deja existante");
 	}
 
-	// ajoute une valeur au domaine d'une variable
+    /**
+     * Ajoute une valeur au domaine d'une variable
+     * @param var String label de la variable
+     * @param val Object valeur de la variable a ajouter
+     */
 	public void addValue(String var, Object val) {
 		if(varDom.get(var)==null) System.err.println("Variable " + var + " non existante");
 		else {
@@ -115,8 +122,12 @@ public class CSP {
 	public ArrayList<Constraint> getConstraints() {
 		return constraints;
 	}
-	
-	// retourne l'ensemble des contraintes contenant la variable pass�e en param�tre
+
+    /**
+     * Retourne l'ensemble des contraintes contenant la variable passée en paramètre
+     * @param var String label de la variable recherché
+     * @return liste de contrainte
+     */
 	public ArrayList<Constraint> getConstraintsContaining(String var) {
 		ArrayList<Constraint> selected = new ArrayList<Constraint>();
 		for(Constraint c : constraints) {
