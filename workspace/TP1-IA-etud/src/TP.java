@@ -24,8 +24,8 @@ public class TP {
 		}
 		System.out.println("\nRecherche d'une solution au probleme :\n" + myProblem);
 		Solver mySolver = new Solver(myProblem);
-		//HashMap<String,Object> mySolution = mySolver.searchSolution();
-        HashSet<HashMap<String,Object>> mySolution = mySolver.searchAllSolutions();
+		HashMap<String,Object> mySolution = mySolver.searchSolution();
+        //HashSet<HashMap<String,Object>> mySolution = mySolver.searchAllSolutions();
         if (mySolution == null) System.out.println("Pas de solution !");
 		else {
             System.out.println("Il y a "+mySolution.size()+" solution(s)");

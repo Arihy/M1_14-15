@@ -40,9 +40,10 @@ public class Solver
 
             if(consistant(newAssignation, problem.getConstraints()))
             {
-                if(backtrack(newAssignation) != null)
+                HashMap<String, Object> res = backtrack(newAssignation);
+                if(res != null)
                 {
-                    return backtrack(newAssignation);
+                    return res;
                 }
             }
         }
@@ -87,6 +88,7 @@ public class Solver
 
     /**
      * Trouve toues les solutions du problème s'il en existe
+     * @param ens HashSet de HashMap permettant de stoquer toutes les solutions
      * @param assignation HashMap contenant une solution partielle
      * @return appel recursif s'il trouve une solution partielle, null s'il n'y a pas de solution
      */
@@ -94,7 +96,9 @@ public class Solver
     {
         if(assignation.size() == problem.getVarNumber())
         {
-            ens.add(assignation);
+            HashMap<String,Object> newAssignation = new HashMap<String, Object>(assignation);
+            System.out.println(newAssignation);
+            ens.add(newAssignation);
             return null;
         }
 
@@ -107,9 +111,10 @@ public class Solver
 
             if(consistant(newAssignation, problem.getConstraints()))
             {
-                if(backtrack(ens, newAssignation) != null)
+                HashMap<String,Object> res = backtrack(ens, newAssignation);
+                if(res != null)
                 {
-                    return backtrack(ens, newAssignation);
+                    return res;
                 }
             }
         }

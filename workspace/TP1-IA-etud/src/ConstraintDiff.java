@@ -34,10 +34,12 @@ public class ConstraintDiff extends Constraint {
      */
     public boolean violationTest(ArrayList<Object> tuple)
     {
-        for(int i = 0; i < tuple.size() - 1; i++)
+        for(int i = 0; i < tuple.size(); i++)
         {
-            if(tuple.get(i).equals(tuple.get(i + 1)))
-                return false;
+            for(int j = 0; j < tuple.size(); j++) {
+                if(i != j && tuple.get(i).equals(tuple.get(j)))
+                    return false;
+            }
         }
         return true;
     }
