@@ -1,50 +1,56 @@
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Classe dÃ©ffinissant une contrainte en gÃ©nÃ©ral
+ */
+public abstract class Constraint {
+	
+	private static int num=0; //pour donner un numï¿½ro unique ï¿½ chaque contrainte
+	protected String name; // nom de la contrainte
+	protected ArrayList<String> varTuple; // ensemble ordonnï¿½ de variables
 
-public class Constraint {
-	
-	private static int num=0; //pour donner un numro unique ˆ chaque contrainte
-	private String name; // nom de la contrainte
-	private ArrayList<String> varTuple; // ensemble ordonn de variables
-	private Set<ArrayList<Object>> valTuples; // ensemble de tuples de la contrainte
-	
+    public Constraint() {
+        num++;
+        this.name = "C"+num;
+        varTuple = new ArrayList<String>();
+    }
+
+    /**
+     * Constructeur initialisant les attributs
+     * @param var ArrayList contenant la liste des variables de la contrainte
+     */
 	public Constraint(ArrayList<String> var) {
 		num++;
 		this.name = "C"+num;
 		varTuple = var; 
-		valTuples = new HashSet<ArrayList<Object>>();
 	}
-	
+
+    /**
+     * Constructeurs initialisant les attributs
+     * @param var ArrayList contenant la liste des variables de la contrainte
+     * @param name String nom de la contrainte
+     */
 	public Constraint(ArrayList<String> var, String name) {
 		num++;
 		this.name = name;
 		varTuple = var; 
-		valTuples = new HashSet<ArrayList<Object>>();
 	}
 	
 	public int getArity() {
 		return varTuple.size();
 	}
-	
 	public String getName() {
 		return name;
 	}
 	public ArrayList<String> getVariables() {
 		return varTuple;
 	}
-	
-	public void addTuple(ArrayList<Object> valTuple) {
-		if(valTuple.size() != varTuple.size()) System.err.println("Le tuple " + valTuple + " n'a pas l'arite " + varTuple.size() + " de la contrainte " + name);
-		else if(!valTuples.add(valTuple)) System.err.println("Le tuple " + valTuple + " est deja present dans la contrainte "+ name);
-	}
-	
-	
+
+    public abstract boolean violationTest(ArrayList<Object> tuple);
+
 	public String toString() {
-		return "\n\t"+ name + " = " + varTuple + " : " + valTuples; 
+		return "\n\t"+ name + " = " + varTuple + " : ";
 	}
-
-
 }
